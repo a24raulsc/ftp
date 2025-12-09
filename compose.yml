@@ -2,7 +2,11 @@ services:
   ftpserver:
     build: docker/ftpserver
     networks:
-      rede_ftp:    
+      rede_ftp:
+    volumes:
+    - ./docker/ftpserver/vsftpd.conf:/etc/vsftpd.conf
+    - ./docker/ftpserver/vsftpd.banner:/etc/vsftpd/vsftpd.banner
+    - ./docker/ftpserver/ftp.log:/var/log/ftp.log
   cliente1:
     build: docker/cliente
     hostname: cliente1
