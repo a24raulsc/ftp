@@ -1,0 +1,21 @@
+services:
+  ftpserver:
+    build: docker/ftpserver
+    networks:
+      rede_ftp:    
+  cliente1:
+    build: docker/cliente
+    hostname: cliente1
+    networks:
+      rede_ftp:
+  cliente2:
+    build: docker/cliente
+    hostname: cliente2
+    networks:
+      rede_ftp:
+networks:
+  rede_ftp:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24    
